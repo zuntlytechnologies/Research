@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>India Pharma Opportunity Atlas — Founder Research</title>
+<meta name="description" content="A founder-level, investor-level, operator-level research program mapping the Indian pharmaceutical ecosystem to discover 35+ startup opportunities for a non-scientist founder." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<style>
+  :root{
+    --bg:#0a0e1a; --bg2:#0e1424; --panel:#121a2e; --panel2:#16203a;
+    --line:#243049; --line2:#1b2438;
+    --txt:#e6ebf5; --muted:#9aa7c0; --faint:#6b7894;
+    --brand:#5b8cff; --brand2:#7c5cff; --accent:#1fd6a6; --warn:#ffb454; --danger:#ff6b8a;
+    --hi:#11324a; --radius:14px; --maxw:980px;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 700px at 80% -10%,#16224400,#0a0e1a),var(--bg);color:var(--txt);font-family:var(--font);line-height:1.62;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .shell{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh}
+  .sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:linear-gradient(180deg,var(--bg2),#0b1020);border-right:1px solid var(--line);padding:22px 16px 60px}
+  .content{min-width:0;padding:0}
+  @media (max-width:980px){
+    .shell{grid-template-columns:1fr}
+    .sidebar{position:fixed;z-index:50;width:84%;max-width:340px;left:-100%;transition:left .25s ease;box-shadow:var(--shadow)}
+    .sidebar.open{left:0}
+    .topbar{display:flex !important}
+    .backdrop.show{display:block}
+  }
+
+  /* Sidebar brand */
+  .brand{display:flex;gap:12px;align-items:center;margin-bottom:18px;padding:4px 6px}
+  .logo{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-weight:800;color:#fff;box-shadow:0 6px 18px rgba(91,140,255,.4)}
+  .brand h1{font-size:15px;margin:0;letter-spacing:.2px}
+  .brand p{font-size:11.5px;margin:2px 0 0;color:var(--faint)}
+
+  .search{position:relative;margin:6px 4px 14px}
+  .search input{width:100%;padding:10px 12px 10px 34px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--txt);font-size:13px;outline:none}
+  .search input:focus{border-color:var(--brand)}
+  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.5}
+
+  .navgroup{margin:14px 4px 4px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint);font-weight:700}
+  .nav a{display:flex;gap:9px;align-items:baseline;padding:7px 10px;border-radius:9px;color:var(--muted);font-size:13px;line-height:1.35;border:1px solid transparent}
+  .nav a .n{color:var(--faint);font-variant-numeric:tabular-nums;font-size:11px;min-width:26px;font-family:var(--mono)}
+  .nav a:hover{background:var(--panel);color:var(--txt);text-decoration:none}
+  .nav a.active{background:linear-gradient(90deg,rgba(91,140,255,.16),rgba(124,92,255,.08));color:#fff;border-color:var(--line);font-weight:600}
+  .nav a.hidden{display:none}
+
+  /* Topbar (mobile) */
+  .topbar{display:none;position:sticky;top:0;z-index:40;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .hamb{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;padding:64px 40px 48px;border-bottom:1px solid var(--line);background:radial-gradient(900px 400px at 15% -20%,rgba(124,92,255,.22),transparent),radial-gradient(700px 380px at 90% 0%,rgba(31,214,166,.14),transparent)}
+  .hero .wrap{max-width:var(--maxw);margin:0 auto}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--accent);background:rgba(31,214,166,.1);border:1px solid rgba(31,214,166,.3);padding:5px 12px;border-radius:999px;font-weight:600;letter-spacing:.4px}
+  .hero h2{font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:18px 0 12px;letter-spacing:-.5px;background:linear-gradient(120deg,#fff 30%,#a9c0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:17px;color:var(--muted);max-width:760px;margin:0 0 26px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:760px}
+  @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:40px 22px 34px}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .stat .v{font-size:26px;font-weight:800;background:linear-gradient(120deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat .l{font-size:11.5px;color:var(--faint);margin-top:2px;letter-spacing:.3px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .chip{font-size:11.5px;color:var(--muted);background:var(--panel2);border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+  .chip b{color:var(--accent)}
+
+  /* Article */
+  .doc{max-width:var(--maxw);margin:0 auto;padding:10px 40px 120px}
+  @media (max-width:640px){.doc{padding:10px 20px 90px}}
+  .section{padding:30px 0 8px;border-bottom:1px solid var(--line2);scroll-margin-top:70px}
+  .section:last-child{border-bottom:none}
+
+  .md h1{font-size:27px;letter-spacing:-.3px;margin:6px 0 14px;padding-bottom:10px;border-bottom:2px solid;border-image:linear-gradient(90deg,var(--brand),var(--brand2) 60%,transparent) 1}
+  .md h2{font-size:21px;margin:30px 0 10px;color:#fff}
+  .md h3{font-size:16.5px;margin:22px 0 8px;color:#dbe4f7}
+  .md h4{font-size:14px;margin:16px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+  .md p{margin:10px 0;color:#dde4f2}
+  .md ul,.md ol{margin:10px 0;padding-left:22px}
+  .md li{margin:5px 0;color:#d4dcec}
+  .md li::marker{color:var(--brand)}
+  .md strong{color:#fff}
+  .md em{color:var(--muted)}
+  .md hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+  .md blockquote{margin:16px 0;padding:12px 18px;background:linear-gradient(90deg,rgba(91,140,255,.08),transparent);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;color:var(--muted)}
+  .md blockquote p{color:#cdd8ee;margin:4px 0}
+  .md code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);border:1px solid var(--line);padding:1.5px 6px;border-radius:6px;color:#a9c7ff}
+  .md pre{background:#0b1120;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;margin:14px 0}
+  .md pre code{background:none;border:none;padding:0;color:#bcd0f5;font-size:12.5px;line-height:1.7}
+  .md a{border-bottom:1px dashed rgba(91,140,255,.4)}
+  .md table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;display:block;overflow-x:auto;white-space:nowrap}
+  .md th,.md td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  .md th{background:var(--panel2);color:#fff;font-weight:600;position:sticky;top:0}
+  .md tbody tr:nth-child(even){background:rgba(255,255,255,.018)}
+  .md tbody tr:hover{background:rgba(91,140,255,.06)}
+
+  /* Loading + footer */
+  .loading{max-width:var(--maxw);margin:40px auto;padding:0 40px}
+  .skeleton{height:14px;background:linear-gradient(90deg,var(--panel),var(--panel2),var(--panel));background-size:200% 100%;animation:sh 1.4s infinite;border-radius:6px;margin:10px 0}
+  @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .footer{max-width:var(--maxw);margin:0 auto;padding:30px 40px 80px;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line)}
+  .toTop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;cursor:pointer;font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .3s;z-index:30}
+  .toTop.show{opacity:1;pointer-events:auto}
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--accent));width:0;z-index:60;transition:width .1s}
+  .disclaimer{font-size:11.5px;color:var(--faint);background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:12px 14px;margin:18px 0}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="topbar">
+  <button class="hamb" id="hamb" aria-label="Menu">☰</button>
+  <strong style="font-size:14px">India Pharma Opportunity Atlas</strong>
+</div>
+<div class="backdrop" id="backdrop"></div>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo">℞</div>
+      <div>
+        <h1>Pharma Opportunity Atlas</h1>
+        <p>Founder research · India focus</p>
+      </div>
+    </div>
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" type="text" placeholder="Filter sections…" autocomplete="off" />
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+
+  <main class="content">
+    <header class="hero">
+      <div class="wrap">
+        <span class="eyebrow">● 10–20 YEAR FOUNDER RESEARCH PROGRAM</span>
+        <h2>The India Pharma Opportunity Atlas</h2>
+        <p class="lead">A founder-, investor-, and operator-level map of the pharmaceutical ecosystem — built to discover where a <strong>non-scientist founder</strong> (finance · compliance · automation · AI · SaaS) can enter, partner, build, and compound a serious pharma company over a lifetime.</p>
+        <div class="stats">
+          <div class="stat"><div class="v">30</div><div class="l">DEEP-DIVE SECTIONS</div></div>
+          <div class="stat"><div class="v">36+</div><div class="l">SCORED OPPORTUNITIES</div></div>
+          <div class="stat"><div class="v">6</div><div class="l">ANALYSIS FRAMEWORKS</div></div>
+          <div class="stat"><div class="v">18</div><div class="l">BUSINESS-MODEL TYPES</div></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Beyond pure SaaS: <b>hardware · IoT · services · fintech · marketplace · infra</b></span>
+          <span class="chip">Founder-fit scored</span>
+          <span class="chip">India market reality</span>
+          <span class="chip">Evidence-disciplined</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="loading" id="loading">
+      <div class="skeleton" style="width:40%"></div>
+      <div class="skeleton" style="width:90%"></div>
+      <div class="skeleton" style="width:80%"></div>
+      <div class="skeleton" style="width:85%"></div>
+      <div class="disclaimer">Loading the full atlas… (this page renders 36 documents into one). If nothing appears, your browser may be blocking local file access — view it via the published GitHub Pages link instead.</div>
+    </div>
+
+    <article class="doc" id="doc"></article>
+
+    <footer class="footer" id="footer" style="display:none">
+      <p><strong>Evidence note.</strong> Market figures throughout are directional ranges from public sources (IBEF, IQVIA, Pharmexcil, DGCIS/DGFT, CDSCO/USFDA/EMA, government reports, company filings, reputable consulting). Nothing here is investment advice; assumptions are tagged in-text. Re-verify against the latest filings before acting.</p>
+      <p style="margin-top:10px">Generated as a living research artifact · sources in <code>frameworks/</code> and <code>sections/</code> · rendered client-side from Markdown.</p>
+    </footer>
+  </main>
+</div>
+
+<button class="toTop" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+const MANIFEST = [
+  {g:"Frameworks", items:[
+    {f:"frameworks/01-research-roadmap.md", n:"F1", t:"Research Roadmap"},
+    {f:"frameworks/02-opportunity-discovery-framework.md", n:"F2", t:"Opportunity Discovery"},
+    {f:"frameworks/03-business-model-classification.md", n:"F3", t:"Business-Model Classification"},
+    {f:"frameworks/04-founder-fit-framework.md", n:"F4", t:"Founder-Fit Framework"},
+    {f:"frameworks/05-scoring-framework.md", n:"F5", t:"Scoring Framework"},
+    {f:"frameworks/06-top-100-portfolio.md", n:"F6", t:"Top 100 Portfolio"},
+  ]},
+  {g:"Foundations & Ecosystem", items:[
+    {f:"sections/section-01-industry-foundations.md", n:"01", t:"Industry Foundations"},
+    {f:"sections/section-02-pharma-ecosystem.md", n:"02", t:"Complete Ecosystem"},
+  ]},
+  {g:"Science, Trials & IP", items:[
+    {f:"sections/section-03-drug-discovery-development.md", n:"03", t:"Drug Discovery & Dev"},
+    {f:"sections/section-04-clinical-research.md", n:"04", t:"Clinical Research"},
+    {f:"sections/section-05-intellectual-property.md", n:"05", t:"Intellectual Property"},
+  ]},
+  {g:"Regulatory, API & Making Drugs", items:[
+    {f:"sections/section-06-regulatory-affairs.md", n:"06", t:"Regulatory Affairs"},
+    {f:"sections/section-07-api-industry.md", n:"07", t:"API Industry"},
+    {f:"sections/section-08-formulations.md", n:"08", t:"Formulations"},
+    {f:"sections/section-09-manufacturing-operations.md", n:"09", t:"Manufacturing Ops"},
+    {f:"sections/section-10-quality-systems.md", n:"10", t:"Quality Systems"},
+  ]},
+  {g:"Market, Supply & Export", items:[
+    {f:"sections/section-11-commercialization.md", n:"11", t:"Commercialization"},
+    {f:"sections/section-12-supply-chain.md", n:"12", t:"Supply Chain"},
+    {f:"sections/section-13-export-business.md", n:"13", t:"Export Business"},
+  ]},
+  {g:"Future, Software & Finance", items:[
+    {f:"sections/section-14-biologics-future-therapies.md", n:"14", t:"Biologics & Future"},
+    {f:"sections/section-15-pharma-software-stack.md", n:"15", t:"Software Stack"},
+    {f:"sections/section-16-pharma-finance.md", n:"16", t:"Pharma Finance"},
+  ]},
+  {g:"Compliance, Safety & Affairs", items:[
+    {f:"sections/section-17-compliance-burden.md", n:"17", t:"Compliance Burden"},
+    {f:"sections/section-18-pharmacovigilance.md", n:"18", t:"Pharmacovigilance"},
+    {f:"sections/section-19-medical-affairs.md", n:"19", t:"Medical Affairs"},
+  ]},
+  {g:"Traceability, Data & CDMO", items:[
+    {f:"sections/section-20-serialization-track-trace.md", n:"20", t:"Serialization & Trace"},
+    {f:"sections/section-21-pharma-data-ecosystem.md", n:"21", t:"Data Ecosystem"},
+    {f:"sections/section-22-cdmo-crdmo.md", n:"22", t:"CDMO & CRDMO"},
+    {f:"sections/section-23-export-intelligence-dossier.md", n:"23", t:"Export Intelligence"},
+  ]},
+  {g:"Synthesis & Founder Mode", items:[
+    {f:"sections/section-24-pharma-ai-opportunity-map.md", n:"24", t:"AI Opportunity Map"},
+    {f:"sections/section-25-problem-database.md", n:"25", t:"Problem Database"},
+    {f:"sections/section-26-industry-power-map.md", n:"26", t:"Industry Power Map"},
+    {f:"sections/section-27-what-ceos-want-fixed.md", n:"27", t:"What CEOs Want Fixed"},
+    {f:"sections/section-28-india-opportunity-atlas.md", n:"28", t:"India Opportunity Atlas"},
+    {f:"sections/section-29-megatrends-2026-2040.md", n:"29", t:"Megatrends 2026–2040"},
+    {f:"sections/section-30-founder-mode-prioritization.md", n:"30", t:"Founder Mode"},
+  ]},
+];
+
+marked.setOptions({gfm:true, breaks:false, headerIds:false, mangle:false});
+
+const nav = document.getElementById('nav');
+const doc = document.getElementById('doc');
+const loading = document.getElementById('loading');
+const footer = document.getElementById('footer');
+
+// Build nav
+const flat = [];
+MANIFEST.forEach(group=>{
+  const h = document.createElement('div'); h.className='navgroup'; h.textContent=group.g; nav.appendChild(h);
+  group.items.forEach(it=>{
+    const id = 'sec-'+it.n;
+    const a = document.createElement('a'); a.href='#'+id; a.dataset.id=id; a.dataset.txt=(it.t+' '+it.n).toLowerCase();
+    a.innerHTML = '<span class="n">'+it.n+'</span><span>'+it.t+'</span>';
+    nav.appendChild(a);
+    flat.push({...it, id, navEl:a});
+  });
+});
+
+async function fetchMd(path){
+  try{ const r = await fetch(path,{cache:'no-cache'}); if(!r.ok) throw new Error(r.status); return await r.text(); }
+  catch(e){ return '# '+path+'\n\n> ⚠️ Could not load this document ('+e.message+'). View via the published site link.'; }
+}
+
+(async function render(){
+  const texts = await Promise.all(flat.map(it=>fetchMd(it.f)));
+  loading.style.display='none';
+  flat.forEach((it,i)=>{
+    const sec = document.createElement('section');
+    sec.className='section'; sec.id=it.id;
+    const md = document.createElement('div'); md.className='md';
+    md.innerHTML = marked.parse(texts[i]);
+    sec.appendChild(md); doc.appendChild(sec);
+  });
+  footer.style.display='block';
+  setupScrollSpy();
+})();
+
+// Search filter
+document.getElementById('search').addEventListener('input', e=>{
+  const q = e.target.value.trim().toLowerCase();
+  flat.forEach(it=> it.navEl.classList.toggle('hidden', q && !it.navEl.dataset.txt.includes(q)));
+  document.querySelectorAll('.navgroup').forEach(g=>{
+    let n=g.nextElementSibling, any=false;
+    while(n && !n.classList.contains('navgroup')){ if(n.classList.contains('nav')||n.tagName==='A'){ if(!n.classList.contains('hidden')) any=true; } n=n.nextElementSibling; }
+    g.style.display = (q && !any) ? 'none':'block';
+  });
+});
+
+// Scrollspy + progress + toTop
+function setupScrollSpy(){
+  const sections = flat.map(it=>document.getElementById(it.id));
+  const navById = {}; flat.forEach(it=>navById[it.id]=it.navEl);
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        flat.forEach(it=>it.navEl.classList.remove('active'));
+        const a = navById[en.target.id]; if(a){ a.classList.add('active'); a.scrollIntoView({block:'nearest'}); }
+      }
+    });
+  },{rootMargin:'-15% 0px -75% 0px'});
+  sections.forEach(s=>obs.observe(s));
+}
+
+const progress=document.getElementById('progress'), toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement; const sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  progress.style.width=(sc*100)+'%';
+  toTop.classList.toggle('show', h.scrollTop>600);
+});
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const sb=document.getElementById('sidebar'), bd=document.getElementById('backdrop');
+document.getElementById('hamb').addEventListener('click',()=>{sb.classList.toggle('open');bd.classList.toggle('show')});
+bd.addEventListener('click',()=>{sb.classList.remove('open');bd.classList.remove('show')});
+nav.addEventListener('click',e=>{ if(e.target.closest('a')){ sb.classList.remove('open'); bd.classList.remove('show'); }});
+</script>
+</body>
+</html>

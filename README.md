@@ -1,5 +1,8 @@
 # Pharma Founder Research — India Pharmaceutical Opportunity Atlas
 
+### 🌐 Live single-page site: **https://zuntlytechnologies.github.io/Research/**
+> The entire atlas (6 frameworks + 30 sections + the opportunity portfolio) is rendered as **one beautiful, searchable single-page website** at the link above, deployed automatically via GitHub Pages. If the link 404s, see **[Publishing](#publishing-the-public-page)** below for the one-time enablement step.
+
 A long-horizon (10–20 year) research program to develop **founder-, investor-, and operator-level** understanding of the pharmaceutical ecosystem — with deep emphasis on **India** — in order to discover and prioritize high-potential startup, technology, AI, SaaS, hardware/IoT, services, infrastructure, supply-chain, export, and fintech opportunities for a **non-scientist founder** (finance / compliance / workflow-automation / AI / SaaS background).
 
 > **Objective:** not to learn pharma terminology, but to find where a founder with this profile can **enter, learn, partner, build, compound, and create a meaningful pharma-industry company over a lifetime.**
@@ -18,13 +21,34 @@ A long-horizon (10–20 year) research program to develop **founder-, investor-,
 | [`05-scoring-framework.md`](frameworks/05-scoring-framework.md) | Capital/timeline bands, 22 scoring dimensions, attractiveness/risk formulas, scorecard template |
 | [`06-top-100-portfolio.md`](frameworks/06-top-100-portfolio.md) | Living, ranked opportunity tracker (the program's output artifact) |
 
-### `sections/` — the 30 deep-dive studies (executed one at a time)
-| File | Status |
-|------|--------|
-| [`section-01-industry-foundations.md`](sections/section-01-industry-foundations.md) | ✅ Complete |
-| `section-02` … `section-30` | ⏳ Pending — executed sequentially, each taking the prior section's output as input |
+### `sections/` — the 30 deep-dive studies (all complete ✅)
+Each section follows the same template: how it really works → stakeholder/money/power maps → manual workflows → pain points → existing solutions & gaps → opportunity harvest (by type) → scored opportunities → weak opportunities to avoid → customer-discovery questions → key learnings.
 
-See the roadmap for the full list and sequencing of Sections 2–30.
+| # | Section | # | Section |
+|---|---------|---|---------|
+| 01 | [Industry Foundations](sections/section-01-industry-foundations.md) | 16 | [Pharma Finance](sections/section-16-pharma-finance.md) |
+| 02 | [Complete Ecosystem](sections/section-02-pharma-ecosystem.md) | 17 | [Compliance Burden](sections/section-17-compliance-burden.md) |
+| 03 | [Drug Discovery & Dev](sections/section-03-drug-discovery-development.md) | 18 | [Pharmacovigilance](sections/section-18-pharmacovigilance.md) |
+| 04 | [Clinical Research](sections/section-04-clinical-research.md) | 19 | [Medical Affairs](sections/section-19-medical-affairs.md) |
+| 05 | [Intellectual Property](sections/section-05-intellectual-property.md) | 20 | [Serialization & Trace](sections/section-20-serialization-track-trace.md) |
+| 06 | [Regulatory Affairs](sections/section-06-regulatory-affairs.md) | 21 | [Data Ecosystem](sections/section-21-pharma-data-ecosystem.md) |
+| 07 | [API Industry](sections/section-07-api-industry.md) | 22 | [CDMO & CRDMO](sections/section-22-cdmo-crdmo.md) |
+| 08 | [Formulations](sections/section-08-formulations.md) | 23 | [Export Intelligence](sections/section-23-export-intelligence-dossier.md) |
+| 09 | [Manufacturing Ops](sections/section-09-manufacturing-operations.md) | 24 | [AI Opportunity Map](sections/section-24-pharma-ai-opportunity-map.md) |
+| 10 | [Quality Systems](sections/section-10-quality-systems.md) | 25 | [Problem Database](sections/section-25-problem-database.md) |
+| 11 | [Commercialization](sections/section-11-commercialization.md) | 26 | [Industry Power Map](sections/section-26-industry-power-map.md) |
+| 12 | [Supply Chain](sections/section-12-supply-chain.md) | 27 | [What CEOs Want Fixed](sections/section-27-what-ceos-want-fixed.md) |
+| 13 | [Export Business](sections/section-13-export-business.md) | 28 | [India Opportunity Atlas](sections/section-28-india-opportunity-atlas.md) |
+| 14 | [Biologics & Future](sections/section-14-biologics-future-therapies.md) | 29 | [Megatrends 2026–2040](sections/section-29-megatrends-2026-2040.md) |
+| 15 | [Software Stack](sections/section-15-pharma-software-stack.md) | 30 | [Founder Mode](sections/section-30-founder-mode-prioritization.md) |
+
+**The bottom line (Section 30):** the recommended wedge is the **Export Regulatory Lifecycle platform** (OPP-01/02) — start as managed RA + renewal/variation tracking for mid-market exporters, accumulate a proprietary regulatory/export **data network**, then compound into tender/IP intelligence and **export finance** — a lifetime-scale compliance→data→fintech platform that fits a non-scientist finance/compliance/AI/SaaS founder.
+
+## Publishing the public page
+The site auto-deploys via [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) using GitHub Pages.
+- The workflow attempts to enable Pages automatically. If your org/repo policy blocks auto-enable, do this **once**: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**, then re-run the workflow (Actions tab) or push to `main`.
+- Pages publishes from the **default branch (`main`)**, so the public URL goes live after this PR is merged. URL: **https://zuntlytechnologies.github.io/Research/**
+- The page is fully client-side (renders the Markdown in `frameworks/` + `sections/` into one page), so it works on any static host.
 
 ---
 
