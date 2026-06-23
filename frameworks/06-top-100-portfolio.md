@@ -103,6 +103,53 @@
 
 ---
 
+## Part F — Full opportunity ledger (after Sections 1–30)
+
+> Re-ranked by founder-fit-weighted attractiveness. Capital bands per `05A`; types per `02E`. Attractiveness is preliminary/directional pending live validation.
+
+| ID | Opportunity | Bucket | Model | Type | Capital | TTF | Founder fit | Attr | Priority |
+|----|-------------|--------|-------|------|---------|-----|-------------|------|----------|
+| OPP-01 | Export registration & dossier-lifecycle intelligence | Export | Data→SaaS+svc | Platform | C2 | T2 | 9 | 80 | High |
+| OPP-20 | Patent-cliff & generic-opportunity intelligence | Data | Data+AI | Platform | C2 | T2 | 9 | 78 | High |
+| OPP-02 | Managed RA + RegTech for mid-market exporters | RegTech | Mgd svc→SaaS | Platform | C2 | T2 | 8 | 77 | High |
+| OPP-03 | Tender & govt-procurement intelligence | Commercial | Data+SaaS | Platform | C2 | T2 | 8 | 75 | High |
+| OPP-04 | Distributor/channel working-capital finance | Fintech | Fintech | Fintech | C3(→C2) | T2 | 8 | 74 | High |
+| OPP-10 | Mid-market eQMS SaaS | Quality | SaaS | Platform | C2 | T2 | 8 | 74 | High |
+| OPP-08 | Managed audit-readiness + AI compliance | Quality | Mgd svc→AI | Platform | C2 | T2 | 8 | 73 | High |
+| OPP-06 | Multi-market serialization compliance (exporters) | Track&trace | Hybrid | Platform | C2 | T2 | 8 | 73 | High |
+| OPP-05 | Cold-chain IoT monitoring + analytics | Cold chain | HW→data→SaaS | Hardware-enabled | C2/C3 | T2 | 7 | 72 | High |
+| OPP-35 | Pharma commercial/competitive intelligence (mid-mkt) | Data | Data network | Platform | C2/C3 | T2-T3 | 8 | 72 | Med-High |
+| OPP-21 | AI dossier/eCTD authoring & gap-check | RegTech | SaaS+AI | Platform | C2 | T2 | 8 | 72 | High |
+| OPP-07 | Managed PV + AI case processing | PV | Mgd svc→AI | Platform | C2 | T2 | 7 | 71 | High |
+| OPP-09 | API/KSM sourcing marketplace + intelligence | API | Marketplace+data | Marketplace | C2/C3 | T2 | 7 | 70 | Med-High |
+| OPP-29 | Pharma data-integration & AI layer (mid-mkt) | Data | SaaS+AI+integ | Platform | C2/C3 | T2-T3 | 8 | 70 | Med-High |
+| OPP-31 | Compliance-/data-linked pharma credit scoring | Fintech | Data+fintech | Platform | C2→C3 | T2 | 9 | 70 | Med-High |
+| OPP-22 | Packaging artwork & label lifecycle mgmt | Quality | SaaS | Platform | C2 | T2 | 8 | 68 | Med-High |
+| OPP-26 | Distributor-discovery & vetting marketplace | Export | Marketplace+data | Marketplace | C2 | T2-T3 | 8 | 68 | Med-High |
+| OPP-28 | Chain-of-custody & ultra-cold-chain (biologics) | Cold chain | HW+SaaS | Long-term strategic | C3 | T3 | 7 | 68 | Med-High |
+| OPP-11 | CDMO/CRO capacity & RFQ marketplace | CDMO | Marketplace+SaaS | Marketplace | C2 | T2-T3 | 7 | 67 | Med-High |
+| OPP-16 | Shared supplier-qualification & audit registry | API/Quality | Data/SaaS | Platform | C2 | T2 | 7 | 66 | Medium |
+| OPP-13 | Plant digital-ops (calibration/maint/validation/e-log) | Mfg 4.0 | SaaS+IoT | Platform | C2 | T2 | 7 | 66 | Med-High |
+| OPP-18 | Patient-recruitment & site-feasibility network | Clinical | Marketplace+data | Platform | C2/C3 | T2-T3 | 6 | 66 | Medium |
+| OPP-12 | Export-receivable / trade finance | Fintech | Fintech | Fintech | C3 | T2 | 7 | 66 | Med-High |
+| OPP-34 | Anti-counterfeit QR authentication + engagement | Track&trace | SW+data | Platform | C2 | T2 | 7 | 64 | Medium |
+| OPP-15 | Channel sell-out & reconciliation visibility | Supply | SaaS+data | Platform | C2 | T2 | 7 | 64 | Medium |
+| OPP-25 | Inventory/expiry financing + reduction | Fintech | Fintech+data | Fintech | C3 | T2 | 7 | 64 | Medium |
+| OPP-24 | Field-force effectiveness + doctor intelligence | Commercial | SaaS+AI | Platform | C2 | T2 | 7 | 66 | Medium |
+| OPP-19 | Affordable eClinical suite (India/BA-BE CROs) | Clinical | SaaS | Platform | C2 | T2 | 6 | 62 | Medium |
+| OPP-32 | Pharma CFO / working-capital analytics SaaS | Fintech | SaaS | Platform | C1/C2 | T2 | 8 | 62 | Medium |
+| OPP-36 | Tech-transfer & CDMO project-management SaaS | CDMO | SaaS | Platform | C2 | T2 | 7 | 62 | Medium |
+| OPP-23 | Stability-study management SaaS | Quality | SaaS | Fast revenue | C1/C2 | T2 | 8 | 60 | Medium |
+| OPP-33 | AI medical-information & MLR assistant | Medical Affairs | SaaS+AI | Platform | C2 | T2 | 7 | 60 | Medium |
+| OPP-14 | Pharma workforce GxP training + certification | Training | Training | Long-term strategic | C1/C2 | T1-T2 | 7 | 62 | Medium |
+| OPP-27 | Export-documentation automation | Export | SaaS+AI | Fast revenue | C2 | T2 | 8 | 62 | Medium |
+| OPP-17 | Discovery-CRO data exchange & sample-tracking | Clinical | SaaS+svc | Platform | C2 | T2 | 6 | 58 | Medium |
+| OPP-30 | MSME API supplier / import financing | Fintech | Fintech | Fintech | C3 | T2 | 7 | 62 | Medium |
+
+**Top 3 wedge candidates (see Section 30):** OPP-01/02 (export regulatory lifecycle — recommended), OPP-08/10 (compliance platform), OPP-03/15→04 (commercial→fintech).
+
+---
+
 ## Part E — Update protocol
 
 1. After each section, **add** new opportunities as cards + ranking rows.
