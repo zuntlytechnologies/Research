@@ -44,11 +44,25 @@ Each section follows the same template: how it really works → stakeholder/mone
 
 **The bottom line (Section 30):** the recommended wedge is the **Export Regulatory Lifecycle platform** (OPP-01/02) — start as managed RA + renewal/variation tracking for mid-market exporters, accumulate a proprietary regulatory/export **data network**, then compound into tender/IP intelligence and **export finance** — a lifetime-scale compliance→data→fintech platform that fits a non-scientist finance/compliance/AI/SaaS founder.
 
-## Publishing the public page
-The site auto-deploys via [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) using GitHub Pages.
-- The workflow attempts to enable Pages automatically. If your org/repo policy blocks auto-enable, do this **once**: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**, then re-run the workflow (Actions tab) or push to `main`.
-- Pages publishes from the **default branch (`main`)**, so the public URL goes live after this PR is merged. URL: **https://zuntlytechnologies.github.io/Research/**
-- The page is fully client-side (renders the Markdown in `frameworks/` + `sections/` into one page), so it works on any static host.
+## Publishing the public page (one-time, ~30 seconds)
+
+> GitHub Pages must be switched on **once by a repo admin** — a security policy prevents automated agents/tokens from enabling it for you. After this single click, the public site at **https://zuntlytechnologies.github.io/Research/** works and stays live automatically.
+
+### ✅ Easiest path — no merge, no workflow needed (recommended)
+Publish directly from this branch as plain static files:
+1. Open repo **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **“Deploy from a branch”.**
+3. **Branch:** select `cursor/pharma-strategy-foundations-8c0d` (or `main` after merging) · **Folder:** `/ (root)` · click **Save**.
+4. Wait ~1 minute, then open **https://zuntlytechnologies.github.io/Research/**.
+
+The repo root contains [`index.html`](index.html) plus a [`.nojekyll`](.nojekyll) file, so GitHub serves the page and its Markdown content as-is — no build step required.
+
+### ⚙️ Alternative path — GitHub Actions (auto-redeploy on every push)
+1. Open repo **Settings → Pages → Build and deployment → Source: “GitHub Actions”.**
+2. Re-run the **“Deploy single-page site to GitHub Pages”** workflow from the **Actions** tab (or merge this PR to `main`).
+3. The workflow in [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) deploys automatically thereafter.
+
+> Either way the page is fully client-side (it renders the Markdown in `frameworks/` + `sections/` + this README into one page), so it also works on **any** static host (Netlify, Vercel, Cloudflare Pages, S3) by serving the repo root.
 
 ---
 

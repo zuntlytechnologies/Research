@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - cursor/pharma-strategy-foundations-8c0d
     paths:
       - "index.html"
       - "frameworks/**"
       - "sections/**"
+      - "README.md"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
